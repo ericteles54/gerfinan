@@ -1,6 +1,8 @@
 package br.com.qualidadeintegrada.application.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -38,13 +42,15 @@ public class Conta implements Serializable {
 	
 	@Column(name = "saldo")
 	@NotEmpty(message = "Por favor insira o saldo inicial da conta.")
-	private float saldo;
+	private BigDecimal saldo;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
 	private User user;
 
-	
+	@OneToMany(mappedBy = "conta")
+	@NotNull
+	private List<Transacao> transacoes;
 	
 	
 	public int getConta_id() {
@@ -63,11 +69,11 @@ public class Conta implements Serializable {
 		this.nome = nome;
 	}
 
-	public float getSaldo() {
+	public BigDecimal getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(float saldo) {
+	public void setSaldo(BigDecimal saldo) {
 		this.saldo = saldo;
 	}
 
@@ -78,6 +84,13 @@ public class Conta implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
+	public List<Transacao> getTransacoes() {
+		return transacoes;
+	}
+
+	public void setTransacoes(List<Transacao> transacoes) {
+		this.transacoes = transacoes;
+	}
+		
 }
