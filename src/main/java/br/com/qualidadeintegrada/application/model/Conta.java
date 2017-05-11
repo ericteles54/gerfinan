@@ -53,6 +53,9 @@ public class Conta implements Serializable {
 	private List<Transacao> transacoes;
 	
 	
+	
+	
+	
 	public int getConta_id() {
 		return conta_id;
 	}

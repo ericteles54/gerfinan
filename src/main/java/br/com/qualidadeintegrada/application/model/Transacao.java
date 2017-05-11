@@ -62,7 +62,7 @@ public class Transacao implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@NotEmpty(message = "Por favor selecione o tipo de transação.")
 	@Column(name = "tipo_transacao")
-	private TipoTransacao tipoTransacao;
+	private TipoTransacaoEnun tipoTransacaoEnun;
 	
 	@Column(name = "valor")
 	@NotEmpty(message = "Por favor preencha o campo valor.")
@@ -71,5 +71,78 @@ public class Transacao implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name = "conta_id", referencedColumnName = "conta_id")
 	private Conta conta;
+
 	
+	
+	public long getTransacao_id() {
+		return transacao_id;
+	}
+
+	public void setTransacao_id(long transacao_id) {
+		this.transacao_id = transacao_id;
+	}
+
+	public boolean isConsolidada() {
+		return consolidada;
+	}
+
+	public void setConsolidada(boolean consolidada) {
+		this.consolidada = consolidada;
+	}
+
+	public boolean isAplicacao() {
+		return aplicacao;
+	}
+
+	public void setAplicacao(boolean aplicacao) {
+		this.aplicacao = aplicacao;
+	}
+
+	public boolean isTransferencia() {
+		return transferencia;
+	}
+
+	public void setTransferencia(boolean transferencia) {
+		this.transferencia = transferencia;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public TipoTransacaoEnun getTipoTransacaoEnun() {
+		return tipoTransacaoEnun;
+	}
+
+	public void setTipoTransacaoEnun(TipoTransacaoEnun tipoTransacaoEnun) {
+		this.tipoTransacaoEnun = tipoTransacaoEnun;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}	
 }

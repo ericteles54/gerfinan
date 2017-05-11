@@ -1,6 +1,6 @@
 package br.com.qualidadeintegrada.application.model;
 
-public enum TipoTransacao {
+public enum TipoTransacaoEnun {
 	
 	DESPESA("Despesa"),
 	RECEITA("Receita"),
@@ -8,7 +8,7 @@ public enum TipoTransacao {
 	
 	private String descricao;
 	
-	TipoTransacao(String descricao) {
+	TipoTransacaoEnun(String descricao) {
 		this.descricao = descricao;
 	}
 	
